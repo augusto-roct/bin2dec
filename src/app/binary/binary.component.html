@@ -1,6 +1,9 @@
 <form class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>binary to convert</mat-label>
-        <input matInput placeholder="binary" (keyup)="onKey($event)">
+        <input type="number" #binary matInput [formControl]="binaryFormControl" placeholder="binary" (keydown)="onKey(binary.value)">
+        <mat-error *ngIf="binaryFormControl.hasError('invalid')">
+            Please enter a valid binary
+        </mat-error>
     </mat-form-field>
 </form>
